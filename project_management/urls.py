@@ -28,3 +28,16 @@ urlpatterns = [
     path('api/projects/update/<int:project_id>/', views.update_project),
     path('api/projects/delete/<int:project_id>/', views.delete_project),
 ]
+
+urlpatterns += [
+    path('api/projects/risks/create/', views.create_risk),
+    path('api/projects/risks/get/', views.get_risks),
+    path('api/projects/risks/update/<int:risk_id>/', views.update_risk),
+    path('api/projects/risks/delete/<int:risk_id>/', views.delete_risk),
+    path('api/projects/efforts/log/', views.log_effort),
+    path('api/projects/efforts/get/', views.get_efforts),
+    path('api/projects/req/create/', views.create_requirement),
+    path('api/projects/req/get/', views.get_requirements),
+    path('api/projects/req/update/<int:requirement_id>/', views.update_requirement),
+    path('api/projects/req/delete/<int:requirement_id>/', views.delete_requirement),
+]

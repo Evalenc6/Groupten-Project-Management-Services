@@ -39,14 +39,20 @@ class UserProject(models.Model):
 class Risk(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     description = models.TextField()
+    level = models.CharField(max_length=50)  # e.g., 'Low', 'Medium', 'High'
+    mitigation_plan = models.TextField(blank=True, null=True)  # Optional field
 
-class Effort(models.Model):
+class EffortLog(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     hours = models.IntegerField()
+    date_logged = models.DateTimeField(auto_now_add=True)
 
 class Requirement(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     details = models.TextField()
+    status = models.CharField(max_length=50, default='Pending')  # e.g., 'Pending', 'Completed'
+    tag = models.CharField(max_length=50, default='Functional')  # e.g., 'Functional', 'Non-functional'
 
 class Report(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
