@@ -1,0 +1,143 @@
+.container {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 1rem 2rem;
+    background: white;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 1rem;
+  }
+  
+  .logoGroup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .logo {
+    font-size: 3rem;
+    color: #4B2E83;
+    font-family: 'Brush Script MT', cursive;
+    margin: 0;
+  }
+  
+  .subtitle {
+    color: #4B2E83;
+    font-size: 1rem;
+    border-top: 5px solid #A8C0D6;
+    margin-top: 0.25rem;
+    padding-top: 0.25rem;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+  
+  .logout {
+    background-color: #4B2E83;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .main {
+    padding-top: 2rem;
+  }
+  
+  .projectsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .createButton {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #4B2E83;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .projectCard {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .thumbnail {
+    position: relative;
+    width: 300px;
+    height: 180px;
+    background: #f2f2f2;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .editIcon {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #4B2E83;
+    color: white;
+    padding: 0.25rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+  }
+  
+  .placeholderImage {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    border-radius: 6px;
+  }
+  
+  .projectInfo {
+    flex: 1;
+  }
+  
+  .projectInfo h3 {
+    margin: 0;
+    color: #4B2E83;
+  }
+  
+  .projectInfo p {
+    color: #444;
+    font-size: 0.95rem;
+  }
+  
+  .openButton {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-color: #4B2E83;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .deadline {
+    margin-top: 1rem;
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  

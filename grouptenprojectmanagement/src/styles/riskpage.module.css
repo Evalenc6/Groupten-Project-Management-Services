@@ -1,0 +1,64 @@
+.wrapper {
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f7fbff;
+    min-height: 100vh;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    color: #4B2E83;
+    margin-bottom: 1.5rem;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  .icon {
+    font-size: 1.5rem;
+  }
+  
+  .level {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  /* Color styles */
+  .critical {
+    background-color: #e57373; /* red */
+  }
+  
+  .high {
+    background-color: #ffcc80; /* orange */
+  }
+  
+  .medium {
+    background-color: #fff176; /* yellow */
+  }
+  
+  .low {
+    background-color: #aed581; /* light green */
+  }
+  
+  .minimal {
+    background-color: #b2fef7; /* aqua */
+  }
+  

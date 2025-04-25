@@ -1,0 +1,79 @@
+.wrapper {
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    color: #4B2E83;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+  
+  .addBtn {
+    margin-left: 1rem;
+    background-color: #4B2E83;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .listContainer {
+    margin-top: 2rem;
+    max-height: 70vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f5faff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0.75rem 1rem;
+  }
+  
+  .row:nth-child(even) {
+    background-color: #e9f1fb;
+  }
+  
+  .initials {
+    width: 40px;
+    height: 40px;
+    background-color: #d1e3f3;
+    color: #4B2E83;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 1rem;
+  }
+  
+  .info {
+    flex: 1;
+    color: #333;
+    font-size: 0.95rem;
+    padding-right: 1rem;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .actions button {
+    background-color: #4B2E83;
+    color: white;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  

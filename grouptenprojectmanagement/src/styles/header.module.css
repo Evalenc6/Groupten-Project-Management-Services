@@ -1,0 +1,49 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 4px solid #4B2E83;
+    background-color: #fff;
+  }
+  
+  .left {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .logo {
+    font-size: 3rem;
+    font-family: 'Brush Script MT', cursive;
+    color: #4B2E83;
+    margin: 0;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    color: #4B2E83;
+    border-top: 6px solid #A8C0D6;
+    padding-top: 0.25rem;
+    margin-top: 0.25rem;
+  }
+  
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .avatar {
+    border-radius: 50%;
+  }
+  
+  .logout {
+    background-color: #4B2E83;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
