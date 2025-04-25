@@ -35,15 +35,21 @@
     gap: 0.75rem;
     background-color: #fff;
 }
-  
-#input {
+
+#loginform {
+    display: flex;
+    flex-direction: column;
+    gap:0.75rem;
+}
+    
+#inputform {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
 }
   
-#button {
+.button {
     margin-top: 0.5rem;
     padding: 0.6rem;
     background-color: #4B2E83;
@@ -54,11 +60,11 @@
     cursor: pointer;
 }
   
-#button:hover {
+.button:hover {
     background-color: #3b256a;
 }
   
-#a {
+.a {
     font-size: 0.9rem;
     color: #4B2E83;
     text-align: center;
