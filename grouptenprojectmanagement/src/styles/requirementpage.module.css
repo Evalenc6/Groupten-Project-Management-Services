@@ -1,0 +1,62 @@
+.wrapper {
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    color: #4B2E83;
+    margin-bottom: 1.5rem;
+  }
+  
+  .section {
+    margin-bottom: 2rem;
+  }
+  
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background-color: #e9f3ff;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1.5px solid #4B2E83;
+  }
+  
+  .card {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    width: 250px;
+    min-height: 150px;
+    border-radius: 6px;
+    color: black;
+    background-color: #f0f0f0;
+  }
+  
+  .icon {
+    font-size: 1.5rem;
+  }
+  
+  .status {
+    font-style: italic;
+    margin: 0.2rem 0;
+  }
+  
+  .desc {
+    font-size: 0.9rem;
+  }
+  
+  /* Status-based colors */
+  .pending {
+    background-color: #ef9a9a;
+  }
+  
+  .inprogress {
+    background-color: #ffcc80;
+  }
+  
+  .completed {
+    background-color: #dcedc8;
+  }
+  

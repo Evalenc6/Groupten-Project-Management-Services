@@ -1,0 +1,71 @@
+.card {
+    width: 100%;
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    border: 2px solid #4B2E83;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .date {
+    margin: 0.5rem 0 1rem 0;
+    font-weight: bold;
+    color: #4B2E83;
+  }
+  
+  textarea {
+    width: 100%;
+    min-height: 60px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    font-size: 1rem;
+  }
+  
+  .tasks {
+    margin-bottom: 1rem;
+  }
+  
+  .checkboxGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+  }
+  
+  .delete {
+    background-color: #b0c4de;
+    color: black;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .save {
+    background-color: #4B2E83;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
