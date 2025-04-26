@@ -1,6 +1,7 @@
 [
   {
     "nameOfProject": "Neptune CRM",
+    "projectDescription": "A customer relationship management tool designed to manage sales and customer data efficiently.",
     "admin": [
       "Evalenc6@students.edu"
     ],
@@ -81,6 +82,7 @@
   },
   {
     "nameOfProject": "Apollo Tracker",
+    "projectDescription": "A project tracking system built to help teams manage tasks and deadlines effectively.",
     "admin": [
       "bob@example.com"
     ],
@@ -161,6 +163,7 @@
   },
   {
     "nameOfProject": "Jupiter Analytics",
+    "projectDescription": "An analytics platform to provide insights on business operations and sales performance.",
     "admin": [
       "dave@example.com"
     ],
@@ -241,6 +244,7 @@
   },
   {
     "nameOfProject": "Saturn Scheduler",
+    "projectDescription": "A scheduling system for planning team meetings, project milestones, and resource management.",
     "admin": [
       "bob@example.com"
     ],
@@ -321,6 +325,7 @@
   },
   {
     "nameOfProject": "Venus Organizer",
+    "projectDescription": "A digital organization app to manage notes, documents, and project timelines all in one place.",
     "admin": [
       "Evalenc6@students.edu"
     ],
@@ -401,6 +406,7 @@
   },
   {
     "nameOfProject": "Mars Mapper",
+    "projectDescription": "A mapping tool to visualize project resources, location tracking, and logistics planning.",
     "admin": [
       "bob@example.com"
     ],
@@ -481,6 +487,7 @@
   },
   {
     "nameOfProject": "Mercury Chatbot",
+    "projectDescription": "A customer service chatbot designed to answer FAQs and assist customers automatically.",
     "admin": [
       "Evalenc6@students.edu"
     ],
@@ -561,6 +568,7 @@
   },
   {
     "nameOfProject": "Pluto Archiver",
+    "projectDescription": "A secure document archiving system for storing and retrieving files with version control.",
     "admin": [
       "alice@example.com"
     ],

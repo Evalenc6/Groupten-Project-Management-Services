@@ -1,10 +1,28 @@
 import Header from '@/components/Header';
 import styles from '../styles/landingpage.module.css';
 import React, { useEffect, useState } from 'react';
+import NewProjectForm from '@/components/ProjectForm';
 
 const ProjectsPage: React.FC = () => {
   const [projects, setProjects] = useState<any[]>([]);
+  const [showNewProjectForm, setShowNewProjectForm] = useState(false);
+  const createProject = () =>{
+    setShowNewProjectForm(true);
+  }
+  const handleCloseForm = () =>{
+    setShowNewProjectForm(false);
+  }
 
+  const handleSaveProject  = (newProject: any) =>{
+    const updatedProject = {
+      ...newProject,
+      risks: [],
+      effortlogs: [],
+      requirements: [],
+    };
+    setProjects(prev => [...prev, updatedProject]);
+    setShowNewProjectForm(false);
+  }
   useEffect(() => {
     const fetchProjects = async () => {
       const userString = localStorage.getItem('user');
@@ -13,7 +31,7 @@ const ProjectsPage: React.FC = () => {
       if (!user) return;
 
       try {
-        const response = await fetch('http://localhost:3001/findProjects', {
+        const response = await fetch('http://localhost:3002/findProjects', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -23,7 +41,9 @@ const ProjectsPage: React.FC = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setProjects(data.projects); // ⬅️ update state
+          localStorage.setItem('projects', JSON.stringify(data))
+          console.log(data.projects);
+          setProjects(data.projects); 
         } else {
           alert('Could not fetch projects');
         }
@@ -42,8 +62,15 @@ const ProjectsPage: React.FC = () => {
       <main className={styles.main}>
         <div className={styles.projectsHeader}>
           <h2>Projects</h2>
-          <button className={styles.createButton}>+ New Project</button>
+          <button className={styles.createButton} onClick={createProject}>+ New Project</button>
         </div>
+
+        {showNewProjectForm && (
+          <div className={styles.overlay}>
+            <NewProjectForm onClose={handleCloseForm} onSave={handleSaveProject} />
+          </div>
+        )}
+
 
         {projects.map((proj, index) => (
           <div key={index} className={styles.projectCard}>
@@ -53,7 +80,7 @@ const ProjectsPage: React.FC = () => {
             </div>
             <div className={styles.projectInfo}>
               <h3>{proj.nameOfProject}</h3>
-              <p>{proj.requirements?.length ?? 0} requirements</p>
+              <p>{proj.projectDescription}</p>
               <button className={styles.openButton}>Open Project</button>
               <div className={styles.deadline}>
                 <strong>Upcoming Deadline</strong>
