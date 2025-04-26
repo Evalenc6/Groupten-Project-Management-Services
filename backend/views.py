@@ -6,6 +6,9 @@ from django.views.decorators.http import require_http_methods
 from .models import Project, Risk, CustomUser, EffortLog, Requirement
 from django.http import JsonResponse
 from .models import Project
+import csv
+from io import StringIO
+from django.http import HttpResponse
 
 
 @csrf_exempt
@@ -23,7 +26,8 @@ def register_user(request):
 def login_user(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        user = get_user_model().objects.filter(username=data['username']).first()
+        User = get_user_model()
+        user = User.objects.filter(username=data['username']).first()
         if user and user.check_password(data['password']):
             return JsonResponse({'message': 'Login successful'}, status=200)
         return JsonResponse({'error': 'Invalid credentials'}, status=401)
@@ -179,3 +183,38 @@ def delete_requirement(request, requirement_id):
         return JsonResponse({'error': 'Requirement not found'}, status=404)
     requirement.delete()
     return JsonResponse({'message': 'Requirement deleted successfully'}, status=200)
+
+@csrf_exempt
+@require_http_methods(["GET"])
+def get_effort_report(request):
+    efforts = EffortLog.objects.values('user__username', 'project__name', 'hours', 'date_logged')
+    return JsonResponse({'effort_report': list(efforts)}, status=200)
+
+@csrf_exempt
+@require_http_methods(["GET"])
+def get_requirement_report(request):
+    requirements = Requirement.objects.values('project__name', 'details', 'status', 'tag')
+    return JsonResponse({'requirement_report': list(requirements)}, status=200)
+
+@csrf_exempt
+@require_http_methods(["GET"])
+def export_report_csv(request, report_type):
+    if report_type == 'effort':
+        data = EffortLog.objects.values('user__username', 'project__name', 'hours', 'date_logged')
+        headers = ['Username', 'Project', 'Hours', 'Date Logged']
+    elif report_type == 'requirement':
+        data = Requirement.objects.values('project__name', 'details', 'status', 'tag')
+        headers = ['Project', 'Details', 'Status', 'Tag']
+    else:
+        return JsonResponse({'error': 'Invalid report type'}, status=400)
+
+    # Generate CSV
+    output = StringIO()
+    writer = csv.writer(output)
+    writer.writerow(headers)
+    for row in data:
+        writer.writerow(row.values())
+
+    response = HttpResponse(output.getvalue(), content_type='text/csv')
+    response['Content-Disposition'] = f'attachment; filename="{report_type}_report.csv"'
+    return response
