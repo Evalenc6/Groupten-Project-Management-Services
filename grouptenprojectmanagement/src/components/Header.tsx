@@ -4,8 +4,16 @@ import React from 'react';
 import { useRouter } from 'next/router';
 const Header: React.FC = () => {
   const router = useRouter();
-  const userString = localStorage.getItem('user');
-  const user = userString ? JSON.parse(userString) : null;  
+  var userString = null;
+  var user = null;
+  try{
+    userString = localStorage.getItem('user');
+    user = userString ? JSON.parse(userString) : null;  
+
+  }
+  catch(error){
+    console.log(error)
+}
   var email = '';
 
   if (user) {
