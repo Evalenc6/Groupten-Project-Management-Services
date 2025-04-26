@@ -1,13 +1,13 @@
 import styles from '../styles/Login.module.css';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-
+import {User} from '../../UserClass'
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password,setPassword] = useState('');
   const router = useRouter();
-
+  
   const onSubmit = async (e) => {
     e.preventDefault();
   
@@ -21,6 +21,9 @@ export default function Login() {
       });
   
       if (response.ok) {
+        const data = await response.json();
+        console.log("data" , data.user)
+        localStorage.setItem('user',JSON.stringify(data.user));
         router.push('/landingpage')
       } else {
         alert('Invalid credentials.');

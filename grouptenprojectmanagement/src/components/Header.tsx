@@ -1,8 +1,21 @@
 import styles from '../styles/Header.module.css';
 import Image from 'next/image';
 import React from 'react';
-
+import { useRouter } from 'next/router';
 const Header: React.FC = () => {
+  const router = useRouter();
+  const userString = localStorage.getItem('user');
+  const user = userString ? JSON.parse(userString) : null;  
+  var email = '';
+
+  if (user) {
+    email = user.email;
+    console.log('Logged in user email:', email);
+  }
+  const handleLogout = () =>{
+    localStorage.removeItem('user');
+    router.push('/login');
+  }
   return (
     <header className={styles.header}>
       <div className={styles.left}>
@@ -11,7 +24,8 @@ const Header: React.FC = () => {
       </div>
       <div className={styles.right}>
         <span>Admin Tools</span>
-        <span>Username</span>
+
+        <span>{email}</span>
         <Image
           src="/avatar.png" // Replace this with the avatar path that we will make later
           alt="User Avatar"
@@ -19,7 +33,7 @@ const Header: React.FC = () => {
           height={40}
           className={styles.avatar}
         />
-        <button className={styles.logout}>Logout</button>
+        <button className={styles.logout} onClick={handleLogout} >Logout</button>
       </div>
     </header>
   );

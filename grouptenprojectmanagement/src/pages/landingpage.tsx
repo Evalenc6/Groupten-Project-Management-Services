@@ -1,26 +1,43 @@
 import Header from '@/components/Header';
 import styles from '../styles/landingpage.module.css';
-import React from 'react';
-
-const projects = [
-  {
-    id: 1,
-    title: 'Project1',
-    description: 'Project description '.repeat(10),
-    deadline: 'Put the description of the schedule deadline here.',
-  },
-  {
-    id: 2,
-    title: 'Project2',
-    description: 'Project description '.repeat(10),
-    deadline: 'Put the description of the schedule deadline here.',
-  },
-];
+import React, { useEffect, useState } from 'react';
 
 const ProjectsPage: React.FC = () => {
+  const [projects, setProjects] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const userString = localStorage.getItem('user');
+      const user = userString ? JSON.parse(userString) : null;
+
+      if (!user) return;
+
+      try {
+        const response = await fetch('http://localhost:3001/findProjects', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: user.email }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setProjects(data.projects); // ⬅️ update state
+        } else {
+          alert('Could not fetch projects');
+        }
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+      }
+    };
+
+    fetchProjects(); 
+  }, []);
+
   return (
     <div className={styles.container}>
-      <Header/>
+      <Header />
 
       <main className={styles.main}>
         <div className={styles.projectsHeader}>
@@ -28,19 +45,19 @@ const ProjectsPage: React.FC = () => {
           <button className={styles.createButton}>+ New Project</button>
         </div>
 
-        {projects.map((proj) => (
-          <div key={proj.id} className={styles.projectCard}>
+        {projects.map((proj, index) => (
+          <div key={index} className={styles.projectCard}>
             <div className={styles.thumbnail}>
               <span className={styles.editIcon}>✏️</span>
               <div className={styles.placeholderImage} />
             </div>
             <div className={styles.projectInfo}>
-              <h3>{proj.title}</h3>
-              <p>{proj.description}</p>
+              <h3>{proj.nameOfProject}</h3>
+              <p>{proj.requirements?.length ?? 0} requirements</p>
               <button className={styles.openButton}>Open Project</button>
               <div className={styles.deadline}>
                 <strong>Upcoming Deadline</strong>
-                <p>{proj.deadline}</p>
+                <p>{proj.requirements?.[0]?.[2] ?? 'No upcoming deadlines'}</p>
               </div>
             </div>
           </div>
