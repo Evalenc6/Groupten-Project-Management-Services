@@ -26,11 +26,8 @@ def register_user(request):
 def login_user(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        print("Received data:", data)  # Debug statement
-        user = get_user_model().objects.filter(username=data['username']).first()
-        if user:
-            print("User found:", user.username)  # Debug statement
-            print("Password check:", user.check_password(data['password']))  # Debug statement
+        User = get_user_model()
+        user = User.objects.filter(username=data['username']).first()
         if user and user.check_password(data['password']):
             return JsonResponse({'message': 'Login successful'}, status=200)
         return JsonResponse({'error': 'Invalid credentials'}, status=401)

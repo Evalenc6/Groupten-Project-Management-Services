@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 from .models import Project, EffortLog, Requirement, CustomUser
-from django.contrib.auth import get_user_model
+import json
 
 class APITestCase(TestCase):
     def setUp(self):
@@ -12,12 +12,11 @@ class APITestCase(TestCase):
         self.requirement = Requirement.objects.create(project=self.project, details='Test Requirement', status='Pending', tag='Functional')
 
     def test_create_project(self):
-        User = get_user_model()
-        User.objects.create_user(username='testuser', password='password')
         response = self.client.post(reverse('create_project'), {'name': 'New Project', 'description': 'New Description'}, content_type='application/json')
         self.assertEqual(response.status_code, 201)
 
     def test_login_user(self):
+        payload = json.dumps({'username': 'testuser', 'password': 'password'})
         response = self.client.post(reverse('login_user'), {'username': 'testuser', 'password': 'password'}, content_type='application/json')
         self.assertEqual(response.status_code, 200)
 
